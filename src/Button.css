@@ -1,0 +1,11 @@
+.reset-btn {
+  position: absolute;
+  top: 38px;
+  right: 40px;
+  cursor: pointer;
+  background: url("./assets/ic-reset.svg") no-repeat 0% 0;
+  width: 36px;
+  height: 35px;
+  border: none;
+  background-size: 40px;
+}

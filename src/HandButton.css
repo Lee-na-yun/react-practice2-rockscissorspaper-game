@@ -1,6 +1,6 @@
 .HandButton {
-    width: 166px;
-    height: 166px;
+    width: 130px;
+    height: 130px;
     border: none;
     outline: none;
     text-align: center;
@@ -14,8 +14,8 @@
   
   .HandButton .HandButton-icon {
     opacity: 0.45;
-    width: 55px;
-    height: 55px;
+    width: 45px;
+    height: 45px;
   }
   
   .HandButton:hover {
@@ -25,4 +25,6 @@
   .HandButton:hover .HandButton-icon {
     opacity: 0.87;
   }
+  
+
   
