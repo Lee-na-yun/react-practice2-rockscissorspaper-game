@@ -7,8 +7,8 @@ import "./App.css";
 
 const INITIAL_VALUE = "rock";
 
-function getResult(me, other) {
-  const comparison = compareHand(me, other);
+function getResult(comparison) {
+  //const comparison = compareHand(me, other);
   if (comparison > 0) return "나";
   if (comparison < 0) return "상대";
   return "무승부";
@@ -21,16 +21,19 @@ function App() {
   const [score, setScore] = useState(0);
   const [otherScore, setOtherScore] = useState(0);
   const [bet, setBet] = useState(1);
+  const [comparison, setComparison] = useState(0);
 
   const handleButtonClick = (nextHand) => {
     const nextOtherHand = generateRandomHand();
-    const nextHistoryItem = getResult(nextHand, nextOtherHand);
     const comparison = compareHand(nextHand, nextOtherHand);
+    const nextHistoryItem = getResult(comparison);
+    
     setHand(nextHand);
     setOtherHand(nextOtherHand);
     setGameHistory([...gameHistory, nextHistoryItem]);
     if (comparison > 0) setScore(score + bet);
     if (comparison < 0) setOtherScore(otherScore + bet);
+    setComparison(comparison);
   };
 
   const handleClearClick = () => {
@@ -40,6 +43,7 @@ function App() {
     setScore(0);
     setOtherScore(0);
     setBet(1);
+    setComparison(0);
   };
 
   const handleBetChange = (e) => {
@@ -70,7 +74,7 @@ function App() {
         <div className="game-hand-wrap">
         <div
             className={
-              score < otherScore || score === otherScore ? "HandIcon" : "winner"
+              comparison === 1 ? "winner" : "HandIcon"
             }
           >
             <HandIcon value={hand} className="HandIcon-icon" />
@@ -78,7 +82,7 @@ function App() {
           <em>VS</em>
           <div
             className={
-              otherScore < score || otherScore === score ? "HandIcon" : "winner"
+              comparison === -1 ? "winner" : "HandIcon"
             }
           >
             <HandIcon value={otherHand} className="HandIcon-icon" />

@@ -7,8 +7,8 @@ const WINS = {
 };
 
 export function compareHand(a, b) {
-  if (WINS[a] === b) return 1;
-  if (WINS[b] === a) return -1;
+  if (WINS[a] === b) return 1; //a 묵, b 빠 // a 묵, b 묵
+  if (WINS[b] === a) return -1; // b 묵, a 묵
   return 0;
 }
 
